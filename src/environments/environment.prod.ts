@@ -1,4 +1,4 @@
 ﻿export const environment = {
   production: true,
-  apiUrl: 'http://interviewprep-api-env.eba-wkrnvzpm.ap-south-1.elasticbeanstalk.com'
+  apiUrl: 'https://d9ls840mdxr29.cloudfront.net'
 };
