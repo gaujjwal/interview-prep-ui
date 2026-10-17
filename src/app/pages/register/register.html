@@ -1,0 +1,194 @@
+<div class="register-container">
+
+  <mat-card class="register-card">
+
+    <div class="text-center mb-4">
+
+      <h1>Create Account 🚀</h1>
+
+      <p>
+        Start your interview preparation journey
+      </p>
+
+    </div>
+
+    <form (ngSubmit)="register()">
+
+      <mat-form-field
+        appearance="outline"
+        class="full-width">
+
+        <mat-label>Full Name</mat-label>
+
+        <input
+          matInput
+          [(ngModel)]="fullName"
+          name="fullName">
+
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        class="full-width">
+
+        <mat-label>Email</mat-label>
+
+        <input
+          matInput
+          type="email"
+          [(ngModel)]="email"
+          name="email">
+
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        class="full-width">
+
+        <mat-label>Password</mat-label>
+
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          [(ngModel)]="password"
+          name="password">
+
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="hidePassword=!hidePassword">
+
+          <mat-icon>
+            {{hidePassword ? 'visibility_off':'visibility'}}
+          </mat-icon>
+
+        </button>
+
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        class="full-width">
+
+        <mat-label>Confirm Password</mat-label>
+
+        <input
+          matInput
+          [type]="hideConfirmPassword ? 'password' : 'text'"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword">
+
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="hideConfirmPassword=!hideConfirmPassword">
+
+          <mat-icon>
+            {{hideConfirmPassword ? 'visibility_off':'visibility'}}
+          </mat-icon>
+
+        </button>
+
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        class="full-width">
+
+        <mat-label>Experience</mat-label>
+
+        <mat-select
+          [(ngModel)]="experience"
+          name="experience">
+
+          <mat-option value="0-1">
+            0-1 Years
+          </mat-option>
+
+          <mat-option value="2-4">
+            2-4 Years
+          </mat-option>
+
+          <mat-option value="5-7">
+            5-7 Years
+          </mat-option>
+
+          <mat-option value="8+">
+            8+ Years
+          </mat-option>
+
+        </mat-select>
+
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        class="full-width">
+
+        <mat-label>Primary Technology</mat-label>
+
+        <mat-select
+          [(ngModel)]="technology"
+          name="technology">
+
+          <mat-option value=".NET">
+            .NET
+          </mat-option>
+
+          <mat-option value="Angular">
+            Angular
+          </mat-option>
+
+          <mat-option value="Azure">
+            Azure
+          </mat-option>
+
+          <mat-option value="AWS">
+            AWS
+          </mat-option>
+
+          <mat-option value="SQL Server">
+            SQL Server
+          </mat-option>
+
+        </mat-select>
+
+      </mat-form-field>
+
+      @if(password && confirmPassword && password !== confirmPassword){
+
+        <div class="text-danger mb-3">
+
+          Password and Confirm Password do not match
+
+        </div>
+
+      }
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="register-btn"
+        [disabled]="loading">
+
+        {{ loading ? 'Creating Account...' : 'Register' }}
+
+      </button>
+
+    </form>
+
+    <div class="login-link">
+
+      Already have an account?
+
+      <a routerLink="/login">
+        Login
+      </a>
+
+    </div>
+
+  </mat-card>
+
+</div>

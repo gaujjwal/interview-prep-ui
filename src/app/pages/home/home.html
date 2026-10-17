@@ -1,0 +1,798 @@
+<app-hero></app-hero>
+<div class="container-fluid hero-section min-vh-100" [class.dark-theme]="isDarkMode">
+
+
+
+
+  <div class="container py-5">
+
+    <div class="row align-items-center">
+
+      <div class="col-lg-6">
+
+        <h1 class="display-2 fw-bold">
+
+          Ace Your Next
+
+          <span class="gradient-text">
+            Technical Interview
+          </span>
+
+        </h1>
+
+        <p class="lead mt-4">
+
+          Master .NET, Angular, Azure, AWS,
+          SQL and System Design interviews
+          with AI-powered preparation.
+
+        </p>
+
+        <div class="mt-4">
+
+          <a routerLink="/register" class="btn btn-primary btn-lg me-3">
+            Start Free
+          </a>
+
+          <a routerLink="/questions" class="btn btn-outline-dark btn-lg">
+            Explore Questions
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="col-lg-6 text-center">
+
+        <img src="assets/images/Interview.png">
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <section class="search-section">
+
+  <div class="container">
+
+    <div class="search-card">
+
+      <h1 class="hero-title">
+  Prepare For Your
+  <span>Next Interview</span>
+</h1>
+
+<p class="hero-subtitle">
+  Select your profile and get personalized interview questions.
+</p>
+
+     
+
+      <div class="row">
+
+        <div class="col-md-6">
+
+          <mat-form-field appearance="outline">
+
+            <mat-label>Role</mat-label>
+
+            <mat-select>
+
+              <mat-option>
+                .NET Full Stack Developer
+              </mat-option>
+
+              <mat-option>
+                Angular Developer
+              </mat-option>
+
+              <mat-option>
+                Azure Developer
+              </mat-option>
+
+            </mat-select>
+
+          </mat-form-field>
+
+        </div>
+
+        <div class="col-md-6">
+
+          <mat-form-field appearance="outline">
+
+            <mat-label>Experience</mat-label>
+
+            <mat-select>
+
+              <mat-option>0-2 Years</mat-option>
+              <mat-option>3-5 Years</mat-option>
+              <mat-option>5-8 Years</mat-option>
+              <mat-option>8+ Years</mat-option>
+
+            </mat-select>
+
+          </mat-form-field>
+
+        </div>
+
+        <div class="col-md-6">
+
+          <mat-form-field appearance="outline">
+
+            <mat-label>Primary Skill</mat-label>
+
+            <mat-select>
+
+              <mat-option>.NET</mat-option>
+              <mat-option>Angular</mat-option>
+              <mat-option>Azure</mat-option>
+              <mat-option>AWS</mat-option>
+
+            </mat-select>
+
+          </mat-form-field>
+
+        </div>
+
+        <div class="col-md-6">
+
+          <mat-form-field appearance="outline">
+
+            <mat-label>Target Company</mat-label>
+
+            <mat-select>
+
+              <mat-option>Microsoft</mat-option>
+              <mat-option>Amazon</mat-option>
+              <mat-option>Google</mat-option>
+              <mat-option>Adobe</mat-option>
+
+            </mat-select>
+
+          </mat-form-field>
+
+        </div>
+
+      </div>
+
+      <div class="text-center mt-4">
+
+        <button
+          mat-raised-button
+          color="primary"
+          class="prepare-btn">
+
+          🚀 Start Preparation
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+  <!-- Footer -->
+  <section class="container py-5">
+
+    <h2 class="section-title text-center mb-5">
+      Track Your Progress
+    </h2>
+
+
+
+
+    <!-- Features Section -->
+
+    <div class="container mt-4">
+
+      <div class="row">
+
+        <div class="col-md-3 mb-3">
+
+          <mat-card class="stats-card">
+
+            <mat-card-content>
+
+              <h3>120</h3>
+
+              <p>Total Questions</p>
+
+            </mat-card-content>
+
+          </mat-card>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+          <mat-card class="stats-card">
+
+            <mat-card-content>
+
+              <h3>45</h3>
+
+              <p>Completed</p>
+
+            </mat-card-content>
+
+          </mat-card>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+          <mat-card class="stats-card">
+
+            <mat-card-content>
+
+              <h3>38%</h3>
+
+              <p>Progress</p>
+
+            </mat-card-content>
+
+          </mat-card>
+
+        </div>
+
+        <div class="col-md-3 mb-3">
+
+          <mat-card class="stats-card">
+
+            <mat-card-content>
+
+              <h3>5</h3>
+
+              <p>Categories</p>
+
+            </mat-card-content>
+
+          </mat-card>
+
+        </div>
+
+      </div>
+
+    </div>
+    <mat-card class="mb-4">
+
+      <mat-card-header>
+
+        <mat-card-title>
+          Learning Progress
+        </mat-card-title>
+
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <mat-progress-bar mode="determinate" value="38">
+        </mat-progress-bar>
+
+        <p class="mt-3">
+          Overall Progress: 38%
+        </p>
+
+      </mat-card-content>
+
+    </mat-card>
+  </section>
+  <!-- Technology Categories -->
+
+  
+
+  <mat-card class="activity-card">
+
+    <mat-card-header>
+
+      <mat-card-title>
+
+        <mat-icon class="me-2">history</mat-icon>
+
+        Recent Activity
+
+      </mat-card-title>
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <div class="activity-item">
+
+        <mat-icon color="primary">
+          check_circle
+        </mat-icon>
+
+        <span>
+          Completed .NET Interview Questions
+        </span>
+
+      </div>
+
+      <div class="activity-item">
+
+        <mat-icon color="accent">
+          school
+        </mat-icon>
+
+        <span>
+          Finished Angular Basics Module
+        </span>
+
+      </div>
+
+      <div class="activity-item">
+
+        <mat-icon color="warn">
+          quiz
+        </mat-icon>
+
+        <span>
+          Attempted Azure Quiz
+        </span>
+
+      </div>
+
+      <div class="activity-item">
+
+        <mat-icon color="primary">
+          trending_up
+        </mat-icon>
+
+        <span>
+          Progress increased to 38%
+        </span>
+
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+
+  <mat-card class="quick-actions-card">
+
+    <mat-card-header>
+
+      <mat-card-title>
+
+        <mat-icon class="me-2">
+          flash_on
+        </mat-icon>
+
+        Quick Actions
+
+      </mat-card-title>
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <div class="quick-actions">
+
+        <a routerLink="/questions" mat-raised-button color="primary">
+
+          <mat-icon>quiz</mat-icon>
+
+          Practice Questions
+
+        </a>
+
+        <a routerLink="/progress" mat-raised-button color="accent">
+
+          <mat-icon>trending_up</mat-icon>
+
+          View Progress
+
+        </a>
+
+        <button mat-raised-button>
+
+          <mat-icon>person</mat-icon>
+
+          Update Profile
+
+        </button>
+
+        <button mat-raised-button>
+
+          <mat-icon>description</mat-icon>
+
+          Resume Analyzer
+
+        </button>
+
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+
+  <mat-card class="companies-card">
+
+    <mat-card-header>
+
+      <mat-card-title>
+
+        <mat-icon class="me-2">
+          business_center
+        </mat-icon>
+
+        Target Companies
+
+      </mat-card-title>
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <div class="company-grid">
+
+        @for(company of companies; track company){
+
+        <button mat-stroked-button class="company-btn">
+
+          {{ company }}
+
+        </button>
+
+        }
+
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+  <!-- Interview Tracks -->
+  <mat-card class="recommended-card">
+
+    <mat-card-header>
+
+      <mat-card-title>
+
+        <mat-icon class="me-2">
+          auto_awesome
+        </mat-icon>
+
+        Recommended Questions For You
+
+      </mat-card-title>
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+      @for(question of recommendedQuestions; track question.title){
+
+      <div class="question-item">
+
+        <div>
+
+          <h6>{{ question.title }}</h6>
+
+          <small>
+            {{ question.difficulty }}
+          </small>
+
+        </div>
+
+        <button mat-stroked-button color="primary">
+
+          Practice
+
+        </button>
+
+      </div>
+
+      }
+
+    </mat-card-content>
+
+  </mat-card>
+
+  
+  
+
+  <!-- FAQ Section -->
+
+  <section id="faq" class="container py-5">
+
+    <h2 class="section-title text-center mb-5">
+      Frequently Asked Questions
+    </h2>
+
+    <div class="accordion" id="faqAccordion">
+
+      <div class="accordion-item">
+
+        <h2 class="accordion-header">
+
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+
+            How does InterviewPrep AI work?
+
+          </button>
+
+        </h2>
+
+        <div id="faq1" class="accordion-collapse collapse show">
+
+          <div class="accordion-body">
+
+            InterviewPrep AI provides
+            interview questions,
+            progress tracking,
+            AI-powered learning paths
+            and mock interview preparation.
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="accordion-item">
+
+        <h2 class="accordion-header">
+
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+
+            Can I prepare for .NET and Angular interviews?
+
+          </button>
+
+        </h2>
+
+        <div id="faq2" class="accordion-collapse collapse">
+
+          <div class="accordion-body">
+
+            Yes. The platform includes
+            .NET, Angular, Azure, AWS,
+            SQL Server and System Design
+            interview preparation.
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="accordion-item">
+
+        <h2 class="accordion-header">
+
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+
+            Can I track my progress?
+
+          </button>
+
+        </h2>
+
+        <div id="faq3" class="accordion-collapse collapse">
+
+          <div class="accordion-body">
+
+            Yes. You can mark questions
+            as completed and view progress
+            on your dashboard.
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="accordion-item">
+
+        <h2 class="accordion-header">
+
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+
+            Do you provide AI mock interviews?
+
+          </button>
+
+        </h2>
+
+        <div id="faq4" class="accordion-collapse collapse">
+
+          <div class="accordion-body">
+
+            AI Mock Interview support
+            will be available in upcoming
+            releases.
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+  <!-- Testimonials -->
+
+  <section class="container py-5">
+
+    <h2 class="section-title text-center mb-5">
+
+      Success Stories
+
+    </h2>
+
+    <div class="row">
+
+      <div class="col-md-6 mb-4" data-aos="flip-up">
+
+        <div class="card shadow">
+
+          <div class="card-body">
+
+            <h5>★★★★★</h5>
+
+            <p>
+
+              InterviewPrep AI helped me prepare
+              for my Senior .NET Developer interview.
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-6 mb-4" data-aos="flip-up">
+
+        <div class="card shadow">
+
+          <div class="card-body">
+
+            <h5>★★★★★</h5>
+
+            <p>
+
+              Excellent platform for Azure and
+              System Design preparation.
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Pricing Section -->
+
+  <section class="container py-5">
+
+    <h2 class="section-title text-center mb-5">
+      Choose Your Plan
+    </h2>
+
+    <div class="row">
+
+      <!-- Free Plan -->
+
+      <div class="col-md-4 mb-4">
+
+        <div class="card pricing-card text-center" data-aos="fade-right">
+
+          <div class="card-body">
+
+            <h3>Free</h3>
+
+            <h1 class="my-4">
+              ₹0
+            </h1>
+
+            <ul class="list-unstyled">
+
+              <li>✅ Interview Questions</li>
+              <li>✅ Progress Tracking</li>
+              <li>✅ Dashboard</li>
+              <li>❌ AI Mock Interview</li>
+              <li>❌ Resume Analyzer</li>
+
+            </ul>
+
+            <button class="btn btn-outline-primary mt-3">
+              Start Free
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Pro Plan -->
+
+      <div class="col-md-4 mb-4">
+
+        <div class="card pricing-card featured-plan text-center" data-aos="zoom-in">
+
+          <div class="card-body">
+
+            <span class="badge bg-success mb-3">
+              Most Popular
+            </span>
+
+            <h3>Pro</h3>
+
+            <h1 class="my-4">
+              ₹499
+            </h1>
+
+            <ul class="list-unstyled">
+
+              <li>✅ Everything in Free</li>
+              <li>✅ AI Mock Interview</li>
+              <li>✅ Resume Analyzer</li>
+              <li>✅ Learning Roadmaps</li>
+              <li>✅ Priority Support</li>
+
+            </ul>
+
+            <button class="btn btn-primary mt-3">
+              Get Pro
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Enterprise -->
+
+      <div class="col-md-4 mb-4">
+
+        <div class="card pricing-card text-center" data-aos="fade-left">
+
+          <div class="card-body">
+
+            <h3>Enterprise</h3>
+
+            <h1 class="my-4">
+              Custom
+            </h1>
+
+            <ul class="list-unstyled">
+
+              <li>✅ Team Accounts</li>
+              <li>✅ Advanced Analytics</li>
+              <li>✅ Admin Dashboard</li>
+              <li>✅ Dedicated Support</li>
+              <li>✅ Custom Features</li>
+
+            </ul>
+
+            <button class="btn btn-outline-dark mt-3">
+              Contact Sales
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+  <!-- CTA Section -->
+
+
+</div>

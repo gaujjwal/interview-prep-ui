@@ -1,0 +1,59 @@
+<div class="container mt-4">
+
+  <h2>Dashboard</h2>
+<a
+  routerLink="/admin-questions"
+  class="btn btn-danger mt-3">
+  Manage Questions
+</a>
+  <div *ngIf="dashboard">
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="card text-white bg-primary">
+          <div class="card-body text-center">
+            <h2>{{ dashboard.totalQuestions }}</h2>
+            <p>Total Questions</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card text-white bg-success">
+          <div class="card-body text-center">
+            <h2>{{ dashboard.completedQuestions }}</h2>
+            <p>Completed</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card text-white bg-warning">
+          <div class="card-body text-center">
+            <h2>{{ dashboard.remainingQuestions }}</h2>
+            <p>Remaining</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-4">
+      <h4>Completion Percentage</h4>
+
+      <div class="progress">
+        <div
+          class="progress-bar bg-success"
+          role="progressbar"
+          [style.width.%]="dashboard.completionPercentage">
+
+          {{ dashboard.completionPercentage }}%
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

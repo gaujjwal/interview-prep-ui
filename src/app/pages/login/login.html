@@ -1,0 +1,91 @@
+<div class="login-container">
+
+  <mat-card class="login-card">
+
+    <div class="text-center mb-4">
+
+      <h1>Welcome Back 👋</h1>
+
+      <p>
+        Sign in to continue your interview preparation journey
+      </p>
+
+    </div>
+
+    <form (ngSubmit)="login()">
+
+      <mat-form-field appearance="outline" class="full-width">
+
+        <mat-label>Email</mat-label>
+
+        <input matInput type="email" [(ngModel)]="email" name="email" required>
+
+        <mat-icon matSuffix>
+          email
+        </mat-icon>
+
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+
+        <mat-label>Password</mat-label>
+
+        <input matInput [(ngModel)]="password" name="password" [type]="hidePassword ? 'password' : 'text'" required>
+
+        <button mat-icon-button matSuffix type="button" (click)="togglePassword()">
+
+          <mat-icon>
+
+            {{ hidePassword ? 'visibility_off' : 'visibility' }}
+
+          </mat-icon>
+
+        </button>
+
+      </mat-form-field>
+
+      <div class="login-options">
+
+        <mat-checkbox>
+          Remember Me
+        </mat-checkbox>
+
+        <a class="forgot-link">
+          Forgot Password?
+        </a>
+
+      </div>
+
+      <button mat-raised-button color="primary" class="login-btn" [disabled]="loading">
+
+        @if(loading){
+
+        <mat-spinner diameter="20">
+        </mat-spinner>
+
+        }
+        @else {
+
+        Login
+
+        }
+
+      </button>
+
+    </form>
+
+    <div class="register-link">
+
+      Don't have an account?
+
+      <a routerLink="/register">
+
+        Register
+
+      </a>
+
+    </div>
+
+  </mat-card>
+
+</div>

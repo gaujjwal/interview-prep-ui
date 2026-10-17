@@ -1,0 +1,143 @@
+<div class="container py-4">
+
+    <div class="mb-4">
+
+        <h2>Learning Hub 🚀</h2>
+
+        <p class="text-muted">
+            Personalized learning and interview preparation journey.
+        </p>
+
+    </div>
+
+    <!-- Recommended Questions -->
+
+    <mat-card class="hub-card mb-4">
+
+        <mat-card-title>
+            Recommended Questions
+        </mat-card-title>
+
+        <mat-card-content>
+
+            @for(question of recommendedQuestions; track question){
+
+                <div class="item-row">
+
+                    <span>{{ question }}</span>
+
+                    <button
+                        mat-stroked-button
+                        color="primary">
+
+                        Practice
+
+                    </button>
+
+                </div>
+
+            }
+
+        </mat-card-content>
+
+    </mat-card>
+
+    <!-- Roadmap -->
+
+    <mat-card class="hub-card mb-4">
+
+        <mat-card-title>
+            Learning Roadmap
+        </mat-card-title>
+
+        <mat-card-content>
+
+            @for(item of roadmapItems; track item.title){
+
+                <div class="item-row">
+
+                    <span>{{ item.title }}</span>
+
+                    <mat-icon>
+
+                        {{ item.status === 'completed'
+                            ? 'check_circle'
+                            : item.status === 'inprogress'
+                            ? 'pending'
+                            : 'radio_button_unchecked' }}
+
+                    </mat-icon>
+
+                </div>
+
+            }
+
+        </mat-card-content>
+
+    </mat-card>
+
+    <!-- Weekly Goals -->
+
+    <mat-card class="hub-card mb-4">
+
+        <mat-card-title>
+            Weekly Learning Goals
+        </mat-card-title>
+
+        <mat-card-content>
+
+            @for(goal of weeklyGoals; track goal.title){
+
+                <div class="item-row">
+
+                    <span>{{ goal.title }}</span>
+
+                    <mat-icon>
+
+                        {{ goal.completed
+                            ? 'check_circle'
+                            : 'radio_button_unchecked' }}
+
+                    </mat-icon>
+
+                </div>
+
+            }
+
+        </mat-card-content>
+
+    </mat-card>
+
+    <!-- Achievements -->
+
+    <mat-card class="hub-card">
+
+        <mat-card-title>
+            Achievements & Badges
+        </mat-card-title>
+
+        <mat-card-content>
+
+            <div class="badges">
+
+                @for(badge of achievements; track badge){
+
+                    <div class="badge-item">
+
+                        <mat-icon>
+                            emoji_events
+                        </mat-icon>
+
+                        {{ badge }}
+
+                    </div>
+
+                }
+
+            </div>
+
+        </mat-card-content>
+
+    </mat-card>
+
+</div>

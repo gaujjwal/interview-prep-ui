@@ -1,0 +1,251 @@
+<section class="search-page">
+
+  <div class="search-page-header">
+    <h1>Search Interview Questions</h1>
+
+    <p>
+      Filter by role, experience, skills and company
+      to find relevant interview questions.
+    </p>
+  </div>
+
+
+  <div class="search-filters">
+
+    <!-- Role -->
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Role</mat-label>
+
+      <mat-select [(ngModel)]="selectedRoleId">
+
+        <mat-option [value]="null">
+          Any Role
+        </mat-option>
+
+        @for (role of roles(); track role.id) {
+          <mat-option [value]="role.id">
+            {{ role.name }}
+          </mat-option>
+        }
+
+      </mat-select>
+
+    </mat-form-field>
+
+
+    <!-- Experience -->
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Experience</mat-label>
+
+      <mat-select [(ngModel)]="selectedExperienceLevelId">
+
+        <mat-option [value]="null">
+          Any Experience
+        </mat-option>
+
+        @for (level of experienceLevels(); track level.id) {
+          <mat-option [value]="level.id">
+            {{ level.name }}
+          </mat-option>
+        }
+
+      </mat-select>
+
+    </mat-form-field>
+
+
+    <!-- Skills (multi-select) -->
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Skills</mat-label>
+
+      <mat-select
+        [(ngModel)]="selectedSkillIds"
+        multiple>
+
+        @for (skill of skills(); track skill.id) {
+          <mat-option [value]="skill.id">
+            {{ skill.name }}
+          </mat-option>
+        }
+
+      </mat-select>
+
+    </mat-form-field>
+
+
+    <!-- Company -->
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Company</mat-label>
+
+      <mat-select [(ngModel)]="selectedCompanyId">
+
+        <mat-option [value]="null">
+          Any Company
+        </mat-option>
+
+        @for (company of companies(); track company.id) {
+          <mat-option [value]="company.id">
+            {{ company.name }}
+          </mat-option>
+        }
+
+      </mat-select>
+
+    </mat-form-field>
+
+  </div>
+
+
+  <div class="search-actions">
+
+<button
+  mat-flat-button
+  color="primary"
+  [disabled]="isSearching() || isLoadingFilters()"
+  (click)="onSearch()">
+
+  @if (isSearching()) {
+    <mat-spinner diameter="18"></mat-spinner>
+  } @else if (isLoadingFilters()) {
+    <span>Loading filters...</span>
+  } @else {
+    <span>Search</span>
+  }
+
+</button>
+
+    <button
+      mat-stroked-button
+      [disabled]="isSearching()"
+      (click)="onClearFilters()">
+      Clear Filters
+    </button>
+
+  </div>
+
+
+  @if (hasSearched()) {
+
+    <div class="search-results">
+
+      @if (totalCount() > 0) {
+
+        <div class="results-summary">
+          Showing <strong>{{ totalCount() }}</strong>
+          matching question{{ totalCount() === 1 ? '' : 's' }}
+        </div>
+
+        <div class="results-list">
+
+          @for (question of searchResults(); track question.id) {
+
+            <mat-card class="question-card">
+
+              <div class="question-card-header">
+
+                <h3 class="question-title">
+                  {{ question.title }}
+                </h3>
+
+                <div class="question-meta">
+
+                  <span class="meta-chip role-chip">
+                    <mat-icon>work</mat-icon>
+                    {{ question.role }}
+                  </span>
+
+                  <span class="meta-chip category-chip">
+                    <mat-icon>category</mat-icon>
+                    {{ question.category }}
+                  </span>
+
+                  <span class="meta-chip experience-chip">
+                    <mat-icon>schedule</mat-icon>
+                    {{ question.experienceLevel }}
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              @if (question.skills.length > 0) {
+                <div class="chip-group">
+                  <span class="chip-group-label">Skills:</span>
+
+                  <mat-chip-set>
+                    @for (skill of question.skills; track skill.id) {
+                      <mat-chip>{{ skill.name }}</mat-chip>
+                    }
+                  </mat-chip-set>
+                </div>
+              }
+
+
+              @if (question.companies.length > 0) {
+                <div class="chip-group">
+                  <span class="chip-group-label">Companies:</span>
+
+                  <mat-chip-set>
+                    @for (company of question.companies; track company.id) {
+                      <mat-chip>{{ company.name }}</mat-chip>
+                    }
+                  </mat-chip-set>
+                </div>
+              }
+
+
+              <mat-expansion-panel class="answer-panel">
+
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-icon>visibility</mat-icon>
+                    View Answer
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <p class="question-answer">
+                  {{ question.answer }}
+                </p>
+
+              </mat-expansion-panel>
+
+            </mat-card>
+
+          }
+
+        </div>
+
+      } @else {
+
+        <div class="empty-state">
+
+          <mat-icon class="empty-state-icon">
+            search_off
+          </mat-icon>
+
+          <h3>No matching questions found</h3>
+
+          <p>
+            Try adjusting your filters — for example,
+            choose a broader experience range or
+            remove the company filter.
+          </p>
+
+        </div>
+
+      }
+
+    </div>
+
+  }
+  @else {
+
+  <div class="idle-state">
+    <mat-icon class="idle-state-icon">travel_explore</mat-icon>
+    <p>Select your filters above and click <strong>Search</strong> to find relevant interview questions.</p>
+  </div>
+
+}
+
+</section>

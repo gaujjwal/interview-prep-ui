@@ -1,0 +1,436 @@
+<!-- Premium Announcement Bar -->
+<!-- Premium Announcement Bar -->
+@if (showAnnouncement) {
+  <div
+    class="announcement-bar"
+    [class.announcement-closing]="isAnnouncementClosing">
+
+    <div class="announcement-content">
+
+      <span class="announcement-badge">
+        NEW
+      </span>
+
+      <span class="announcement-text">
+        AI Mock Interviews are now live
+      </span>
+
+      <a
+        routerLink="/mock-interview"
+        class="announcement-link">
+
+        Practice with AI
+
+        <mat-icon>
+          arrow_forward
+        </mat-icon>
+
+      </a>
+
+    </div>
+
+    <button
+      mat-icon-button
+      type="button"
+      class="announcement-close"
+      aria-label="Dismiss announcement"
+      (click)="closeAnnouncement()">
+
+      <mat-icon>close</mat-icon>
+
+    </button>
+
+  </div>
+}
+<header class="premium-header">
+
+  <nav class="navbar navbar-expand-lg bg-white">
+    <div class="container-fluid header-container">
+
+      <!-- Logo -->
+      <a
+        class="navbar-brand premium-logo"
+        routerLink="/home"
+        aria-label="InterviewPrep AI home">
+
+        <span class="logo-icon-wrapper">
+          <mat-icon>trending_up</mat-icon>
+        </span>
+
+        <span class="logo-text">
+          InterviewPrep <strong>AI</strong>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="desktop-navigation">
+
+        <!-- Interview Prep Trigger -->
+        <button
+          mat-button
+          [matMenuTriggerFor]="interviewMenu"
+          class="navigation-button">
+
+          <span>Interview Prep</span>
+          <mat-icon class="dropdown-icon">keyboard_arrow_down</mat-icon>
+        </button>
+
+        <!-- Companies Trigger -->
+        <button
+          mat-button
+          [matMenuTriggerFor]="companiesMenu"
+          class="navigation-button">
+
+          <span>Companies</span>
+          <mat-icon class="dropdown-icon">keyboard_arrow_down</mat-icon>
+        </button>
+
+        <!-- Learning Hub Trigger -->
+        <button
+          mat-button
+          [matMenuTriggerFor]="learningMenu"
+          class="navigation-button">
+
+          <span>Learning Hub</span>
+          <mat-icon class="dropdown-icon">keyboard_arrow_down</mat-icon>
+        </button>
+
+        <!-- Resources Trigger -->
+        <button
+          mat-button
+          [matMenuTriggerFor]="resourcesMenu"
+          class="navigation-button">
+
+          <span>Resources</span>
+          <mat-icon class="dropdown-icon">keyboard_arrow_down</mat-icon>
+        </button>
+
+      </div>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+
+        <button
+          mat-icon-button
+          class="theme-button"
+          (click)="toggleTheme()"
+          [attr.aria-label]="isDarkMode
+            ? 'Switch to light mode'
+            : 'Switch to dark mode'">
+
+          <mat-icon>
+            {{ isDarkMode ? 'light_mode' : 'dark_mode' }}
+          </mat-icon>
+        </button>
+        <!-- Premium Search -->
+<button
+  mat-button
+  type="button"
+  class="header-search"
+  routerLink="/search"
+  aria-label="Search InterviewPrep AI">
+
+  <mat-icon>search</mat-icon>
+
+  <span>Search</span>
+
+</button>
+
+        <a
+          mat-stroked-button
+          routerLink="/login"
+          class="login-button">
+          Login
+        </a>
+
+        <a
+          mat-flat-button
+          routerLink="/register"
+          class="get-started-button">
+          Get Started
+          <mat-icon>arrow_forward</mat-icon>
+        </a>
+
+      </div>
+
+    </div>
+  </nav>
+
+</header>
+
+<!-- =============================== -->
+<!-- INTERVIEW PREP MENU             -->
+<!-- =============================== -->
+
+<mat-menu
+  #interviewMenu="matMenu"
+  class="premium-material-menu"
+  xPosition="after"
+  yPosition="below">
+
+  <div
+    class="menu-content"
+    (click)="$event.stopPropagation()">
+
+    <div class="menu-heading">
+      <span class="menu-heading-icon blue">
+        <mat-icon>workspace_premium</mat-icon>
+      </span>
+
+      <div>
+        <h3>Interview Preparation</h3>
+        <p>Prepare smarter for your next opportunity</p>
+      </div>
+    </div>
+
+    <div class="menu-divider"></div>
+
+    <a mat-menu-item routerLink="/search">
+      <mat-icon class="item-icon blue-icon">quiz</mat-icon>
+
+      <span class="menu-item-content">
+        <strong>Interview Questions</strong>
+        <small>Explore role and technology-based questions</small>
+      </span>
+
+      <mat-icon class="item-arrow">chevron_right</mat-icon>
+    </a>
+
+    <a mat-menu-item routerLink="/company-questions">
+      <mat-icon class="item-icon purple-icon">apartment</mat-icon>
+
+      <span class="menu-item-content">
+        <strong>Company-Wise Preparation</strong>
+        <small>Prepare for specific company interviews</small>
+      </span>
+
+      <mat-icon class="item-arrow">chevron_right</mat-icon>
+    </a>
+
+    <a mat-menu-item routerLink="/mock-interview">
+      <mat-icon class="item-icon orange-icon">psychology</mat-icon>
+
+      <span class="menu-item-content">
+        <strong>AI Mock Interview</strong>
+        <small>Practice realistic interview scenarios</small>
+      </span>
+
+      <span class="new-badge">AI</span>
+    </a>
+
+    <a mat-menu-item routerLink="/roadmaps">
+      <mat-icon class="item-icon green-icon">route</mat-icon>
+
+      <span class="menu-item-content">
+        <strong>Learning Roadmaps</strong>
+        <small>Follow structured preparation plans</small>
+      </span>
+
+      <mat-icon class="item-arrow">chevron_right</mat-icon>
+    </a>
+
+  </div>
+</mat-menu>
+
+<!-- =============================== -->
+<!-- COMPANIES MENU                  -->
+<!-- =============================== -->
+
+<mat-menu
+  #companiesMenu="matMenu"
+  class="premium-material-menu"
+  xPosition="after"
+  yPosition="below">
+
+  <div
+    class="menu-content"
+    (click)="$event.stopPropagation()">
+
+    <div class="menu-heading">
+      <span class="menu-heading-icon purple">
+        <mat-icon>business</mat-icon>
+      </span>
+
+      <div>
+        <h3>Top Companies</h3>
+        <p>Explore company-specific interview preparation</p>
+      </div>
+    </div>
+
+    <div class="menu-divider"></div>
+
+    <div class="company-grid">
+
+      <a mat-menu-item routerLink="/companies/microsoft">
+        <span class="company-avatar microsoft">M</span>
+        <span>Microsoft</span>
+      </a>
+
+      <a mat-menu-item routerLink="/companies/google">
+        <span class="company-avatar google">G</span>
+        <span>Google</span>
+      </a>
+
+      <a mat-menu-item routerLink="/companies/amazon">
+        <span class="company-avatar amazon">A</span>
+        <span>Amazon</span>
+      </a>
+
+      <a mat-menu-item routerLink="/companies/adobe">
+        <span class="company-avatar adobe">A</span>
+        <span>Adobe</span>
+      </a>
+
+      <a mat-menu-item routerLink="/companies/accenture">
+        <span class="company-avatar accenture">A</span>
+        <span>Accenture</span>
+      </a>
+
+      <a mat-menu-item routerLink="/companies/tcs">
+        <span class="company-avatar tcs">T</span>
+        <span>TCS</span>
+      </a>
+
+    </div>
+
+    <div class="menu-footer">
+      <a routerLink="/companies" class="view-all-link">
+        View all companies
+        <mat-icon>arrow_forward</mat-icon>
+      </a>
+    </div>
+
+  </div>
+</mat-menu>
+
+<!-- =============================== -->
+<!-- LEARNING HUB MENU               -->
+<!-- =============================== -->
+
+<mat-menu
+  #learningMenu="matMenu"
+  class="premium-material-menu"
+  xPosition="after"
+  yPosition="below">
+
+  <div
+    class="menu-content"
+    (click)="$event.stopPropagation()">
+
+    <div class="menu-heading">
+      <span class="menu-heading-icon green">
+        <mat-icon>school</mat-icon>
+      </span>
+
+      <div>
+        <h3>Learning Hub</h3>
+        <p>Upgrade your technical and interview skills</p>
+      </div>
+    </div>
+
+    <div class="menu-divider"></div>
+
+    <a mat-menu-item routerLink="/learning/dotnet">
+      <mat-icon class="item-icon purple-icon">code</mat-icon>
+
+      <span class="menu-item-content">
+        <strong>.NET Full Stack</strong>
+        <small>ASP.NET Core, C#, EF Core and APIs</small>
+      </span>
+    </a>
+
+    <a mat-menu-item routerLink="/learning/angular">
+      <mat-icon class="item-icon red-icon">web</mat-icon>
+
+      <span class="menu-item-content">
+        <strong>Angular</strong>
+        <small>Modern frontend development</small>
+      </span>
+    </a>
+
+    <a mat-menu-item routerLink="/learning/cloud">
+      <mat-icon class="item-icon blue-icon">cloud</mat-icon>
+
+      <span class="menu-item-content">
+        <strong>Cloud Engineering</strong>
+        <small>Azure, AWS, containers and DevOps</small>
+      </span>
+    </a>
+
+    <a mat-menu-item routerLink="/learning/system-design">
+      <mat-icon class="item-icon orange-icon">account_tree</mat-icon>
+
+      <span class="menu-item-content">
+        <strong>System Design</strong>
+        <small>Scalable architecture and design patterns</small>
+      </span>
+    </a>
+
+  </div>
+</mat-menu>
+
+<!-- =============================== -->
+<!-- RESOURCES MENU                  -->
+<!-- =============================== -->
+
+<mat-menu
+  #resourcesMenu="matMenu"
+  class="premium-material-menu"
+  xPosition="before"
+  yPosition="below">
+
+  <div
+    class="menu-content"
+    (click)="$event.stopPropagation()">
+
+    <div class="menu-heading">
+      <span class="menu-heading-icon orange">
+        <mat-icon>auto_stories</mat-icon>
+      </span>
+
+      <div>
+        <h3>Career Resources</h3>
+        <p>Practical resources for career growth</p>
+      </div>
+    </div>
+
+    <div class="menu-divider"></div>
+
+    <a mat-menu-item routerLink="/blogs">
+      <mat-icon class="item-icon blue-icon">article</mat-icon>
+
+      <span class="menu-item-content">
+        <strong>Technical Blogs</strong>
+        <small>Learn from practical development guides</small>
+      </span>
+    </a>
+
+    <a mat-menu-item routerLink="/interview-experiences">
+      <mat-icon class="item-icon purple-icon">forum</mat-icon>
+
+      <span class="menu-item-content">
+        <strong>Interview Experiences</strong>
+        <small>Read real candidate experiences</small>
+      </span>
+    </a>
+
+    <a mat-menu-item routerLink="/resume-tips">
+      <mat-icon class="item-icon green-icon">description</mat-icon>
+
+      <span class="menu-item-content">
+        <strong>Resume Preparation</strong>
+        <small>Create an interview-ready resume</small>
+      </span>
+    </a>
+
+    <a mat-menu-item routerLink="/career-guidance">
+      <mat-icon class="item-icon orange-icon">explore</mat-icon>
+
+      <span class="menu-item-content">
+        <strong>Career Guidance</strong>
+        <small>Plan your next career move</small>
+      </span>
+    </a>
+
+  </div>
+</mat-menu>
