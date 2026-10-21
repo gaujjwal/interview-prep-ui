@@ -16,6 +16,12 @@ private apiUrl = `${environment.apiUrl}/api/auth`;
       model
     );
   }
+  googleLogin(idToken: string) {
+  return this.http.post(
+    `${this.apiUrl}/google`,
+    { idToken }
+  );
+}
   register(model: any) {
 
   return this.http.post(
