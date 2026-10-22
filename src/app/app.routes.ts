@@ -11,6 +11,8 @@ import { HomeComponent } from './pages/home/home';
 import { LayoutComponent } from './shared/layout/layout';
 import { LearningHubComponent } from './pages/learning-hub/learning-hub';
 import { SearchComponent } from './pages/search/search';
+import { PrivacyComponent } from './pages/privacy/privacy';
+import { TermsComponent } from './pages/terms/terms';
 export const routes: Routes = [
   {
     path: '',
@@ -62,6 +64,10 @@ export const routes: Routes = [
         canActivate: [authGuard]
       },
       {
+  path: 'privacy',
+  component: PrivacyComponent
+},
+      {
   path: 'learning-hub',
   component: LearningHubComponent,
   canActivate: [authGuard]
@@ -75,6 +81,9 @@ export const routes: Routes = [
   path: 'search',
   component: SearchComponent,
   canActivate: [authGuard] // use your existing guard name
+},{
+  path: 'terms',
+  component: TermsComponent
 }
 
     ]
