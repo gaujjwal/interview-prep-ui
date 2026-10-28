@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ProgressService } from '../../services/progress.service';
 import { jwtDecode } from 'jwt-decode';
 import { CategoryService } from '../../services/category.services';
+import { ProgressStatus } from '../../models/Progress/progress-status.model';
 @Component({
   selector: 'app-questions',
   standalone: true,
@@ -67,7 +68,7 @@ this.categoryService
   };
 
   this.progressService
-    .saveProgress(model)
+    .saveProgress(questionId, ProgressStatus.Completed)
     .subscribe(() => {
 
       alert('Question marked completed');

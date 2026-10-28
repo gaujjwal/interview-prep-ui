@@ -1,40 +1,49 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { jwtDecode } from 'jwt-decode';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
+
 import { ProgressService } from '../../services/progress.service';
+import { ProgressItem } from '../../models/Progress/progress-item.model';
+import { ProgressStatus } from '../../models/Progress/progress-status.model';
 
 @Component({
   selector: 'app-progress',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './progress.html',
   styleUrl: './progress.css'
 })
 export class ProgressComponent implements OnInit {
 
-  progressItems: any[] = [];
+  private readonly progressService = inject(ProgressService);
 
-  constructor(
-    private progressService: ProgressService
-  ) { }
+  readonly progressItems = signal<ProgressItem[]>([]);
+
+  readonly completedCount = computed(() =>
+    this.progressItems()
+      .filter(x => x.status === ProgressStatus.Completed)
+      .length
+  );
+
+  readonly inProgressCount = computed(() =>
+    this.progressItems()
+      .filter(x => x.status === ProgressStatus.InProgress)
+      .length
+  );
 
   ngOnInit(): void {
-
-    const token = localStorage.getItem('token');
-
-    if (!token) {
-      return;
-    }
-
-    const decoded: any = jwtDecode(token);
-
-    const userId = decoded.nameid;
-
+    // User comes from the JWT on the API side
     this.progressService
-      .getProgress(userId)
-      .subscribe(data => {
+      .getMyProgress()
+      .subscribe(data => this.progressItems.set(data));
+  }
 
-        this.progressItems = data;
-      });
+  statusLabel(status: ProgressStatus): string {
+    switch (status) {
+      case ProgressStatus.Completed:
+        return 'Completed';
+      case ProgressStatus.InProgress:
+        return 'In progress';
+      default:
+        return 'Not started';
+    }
   }
 }

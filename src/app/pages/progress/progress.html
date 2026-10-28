@@ -3,29 +3,30 @@
   <h2>My Progress</h2>
 
   <p>
-    Completed Items:
-    {{ progressItems.length }}
+    Completed: {{ completedCount() }} |
+    In progress: {{ inProgressCount() }}
   </p>
 
-  <table border="1" width="100%">
+  <table class="table table-bordered">
 
     <thead>
       <tr>
         <th>Question Id</th>
-        <th>Completed</th>
+        <th>Status</th>
       </tr>
     </thead>
 
     <tbody>
-
-      <tr *ngFor="let item of progressItems">
-
-        <td>{{ item.questionId }}</td>
-
-        <td>{{ item.isCompleted }}</td>
-
-      </tr>
-
+      @for (item of progressItems(); track item.questionId) {
+        <tr>
+          <td>{{ item.questionId }}</td>
+          <td>{{ statusLabel(item.status) }}</td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="2">No progress yet.</td>
+        </tr>
+      }
     </tbody>
 
   </table>

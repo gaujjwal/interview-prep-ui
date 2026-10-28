@@ -1,5 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { ProgressItem } from '../models/Progress/progress-item.model';
+import { ProgressStatus } from '../models/Progress/progress-status.model';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -7,36 +11,24 @@ import { environment } from '../../environments/environment';
 })
 export class ProgressService {
 
-  private apiUrl = `${environment.apiUrl}/api/progress`;
+  private readonly http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  private readonly baseUrl =
+    `${environment.apiUrl}/api/progress`;
 
-  saveProgress(model: any) {
-
-    const token = localStorage.getItem('token');
-
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-
-    return this.http.post(
-      this.apiUrl,
-      model,
-      { headers }
-    );
+  // Current user's progress (user comes from the JWT)
+  getMyProgress(): Observable<ProgressItem[]> {
+    return this.http.get<ProgressItem[]>(this.baseUrl);
   }
-  getProgress(userId: string) {
 
-  const token = localStorage.getItem('token');
-
-  const headers = new HttpHeaders({
-    Authorization: `Bearer ${token}`
-  });
-
-  return this.http.get<any[]>(
-    `${this.apiUrl}/${userId}`,
-    { headers }
-  );
+  // Create or update progress for one question
+  saveProgress(
+    questionId: number,
+    status: ProgressStatus
+  ): Observable<ProgressItem> {
+    return this.http.post<ProgressItem>(this.baseUrl, {
+      questionId,
+      status
+    });
+  }
 }
-}
-``

@@ -209,7 +209,56 @@
                 </p>
 
               </mat-expansion-panel>
+<div class="progress-status-section">
 
+  <span class="progress-status-label">
+    Preparation status:
+  </span>
+
+  <div class="progress-status-actions">
+
+    <button
+      type="button"
+      mat-stroked-button
+      [class.active-status]="
+        getStatus(question.id) === ProgressStatus.NotStarted
+      "
+      (click)="
+        setStatus(question.id, ProgressStatus.NotStarted)
+      ">
+      <mat-icon>radio_button_unchecked</mat-icon>
+      Not started
+    </button>
+
+    <button
+      type="button"
+      mat-stroked-button
+      [class.active-status]="
+        getStatus(question.id) === ProgressStatus.InProgress
+      "
+      (click)="
+        setStatus(question.id, ProgressStatus.InProgress)
+      ">
+      <mat-icon>pending</mat-icon>
+      In progress
+    </button>
+
+    <button
+      type="button"
+      mat-stroked-button
+      [class.active-status]="
+        getStatus(question.id) === ProgressStatus.Completed
+      "
+      (click)="
+        setStatus(question.id, ProgressStatus.Completed)
+      ">
+      <mat-icon>check_circle</mat-icon>
+      Completed
+    </button>
+
+  </div>
+
+</div>
             </mat-card>
 
           }

@@ -222,3 +222,58 @@
   margin: 0;
   font-size: 14px;
 }
+/* Progress status */
+
+.progress-status-section {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.progress-status-label {
+  display: block;
+  margin-bottom: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #475569;
+}
+
+.progress-status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.progress-status-actions button {
+  border-radius: 10px;
+}
+
+.progress-status-actions mat-icon {
+  margin-right: 6px;
+}
+
+/* Currently selected status */
+
+.progress-status-actions button.active-status {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.progress-status-actions button.active-status mat-icon {
+  color: #ffffff;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+  .progress-status-actions {
+    flex-direction: column;
+  }
+
+  .progress-status-actions button {
+    width: 100%;
+  }
+}

@@ -1,7 +1,8 @@
 import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { ProgressService } from '../../services/progress.service';
+import { ProgressStatus } from '../../models/Progress/progress-status.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
@@ -46,7 +47,13 @@ export class SearchComponent implements OnInit {
 
   private readonly snackBar = inject(MatSnackBar);
 
+private readonly progressService = inject(ProgressService);
 
+// Exposed so the template can use ProgressStatus.InProgress, etc.
+readonly ProgressStatus = ProgressStatus;
+
+// questionId -> status for the current user
+readonly progressMap = signal<Record<number, ProgressStatus>>({});
   // Dropdown data (signals)
   readonly roles = signal<SearchOption[]>([]);
 
@@ -94,12 +101,13 @@ readonly isLoadingFilters = computed(() =>
   this.isLoadingCompanies()
 );
 
-  ngOnInit(): void {
-    this.loadRoles();
-    this.loadExperienceLevels();
-    this.loadSkills();
-    this.loadCompanies();
-  }
+ngOnInit(): void {
+  this.loadRoles();
+  this.loadExperienceLevels();
+  this.loadSkills();
+  this.loadCompanies();
+  this.loadProgress();
+}
 
 
  private loadRoles(): void {
@@ -181,8 +189,74 @@ readonly isLoadingFilters = computed(() =>
 }
     });
   }
+private loadProgress(): void {
+  this.progressService.getMyProgress().subscribe({
+    next: (items) => {
+      const map: Record<number, ProgressStatus> = {};
 
+      for (const item of items) {
+        map[item.questionId] = item.status;
+      }
 
+      this.progressMap.set(map);
+    },
+    error: () => {
+      this.snackBar.open(
+        'Could not load your progress.',
+        'Close',
+        { duration: 4000 }
+      );
+    }
+  });
+}
+
+getStatus(questionId: number): ProgressStatus {
+  return this.progressMap()[questionId] ?? ProgressStatus.NotStarted;
+}
+
+saveStatus(questionId: number): void {
+
+  const status = this.getStatus(questionId);
+
+  this.progressService
+    .saveProgress(questionId, status)
+    .subscribe({
+      next: () => {
+        this.snackBar.open(
+          'Progress saved successfully.',
+          'Close',
+          { duration: 3000 }
+        );
+      },
+      error: () => {
+        this.snackBar.open(
+          'Could not save progress. Please try again.',
+          'Close',
+          { duration: 4000 }
+        );
+      }
+    });
+}
+
+setStatus(questionId: number, status: ProgressStatus): void {
+  const previous = this.getStatus(questionId);
+
+  this.progressMap.update(map => ({ ...map, [questionId]: status }));
+
+  this.progressService.saveProgress(questionId, status).subscribe({
+    next: () => {
+      this.snackBar.open('Progress saved.', 'Close', { duration: 2000 });
+    },
+    error: () => {
+      this.progressMap.update(map => ({ ...map, [questionId]: previous }));
+      this.snackBar.open(
+        'Could not save progress. Please try again.',
+        'Close',
+        { duration: 4000 }
+      );
+    }
+  });
+}
   // =========================================
   // SEARCH EXECUTION
   // =========================================
